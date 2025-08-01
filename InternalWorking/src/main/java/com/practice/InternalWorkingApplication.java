@@ -12,12 +12,12 @@ public class InternalWorkingApplication implements CommandLineRunner {
         SpringApplication.run(InternalWorkingApplication.class, args);
     }
 
-    @Autowired
-    private RazorPaymentService paymentService;
+    //   @Autowired
+    private final RazorPaymentService paymentService;
 
-//    public InternalWorkingApplication(RazorPaymentService paymentService) {
-//        this.paymentService = paymentService;
-//    }
+    public InternalWorkingApplication(RazorPaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
 
     @Override
     public void run(String... args) throws Exception {
