@@ -11,7 +11,11 @@ public class InternalWorkingApplication implements CommandLineRunner {
         SpringApplication.run(InternalWorkingApplication.class, args);
     }
 
-    private RazorPaymentService paymentService = new RazorPaymentService();
+    private RazorPaymentService paymentService;
+
+    public InternalWorkingApplication(RazorPaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
 
     @Override
     public void run(String... args) throws Exception {
