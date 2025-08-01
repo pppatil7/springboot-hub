@@ -1,9 +1,6 @@
 package com.practice;
 
-import org.springframework.stereotype.Component;
-
-@Component
-public class RazorPaymentService {
+public class RazorPaymentService implements PaymentService {
 
     public String pay() {
         String payment = "Razorpay";
