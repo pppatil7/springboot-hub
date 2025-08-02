@@ -1,5 +1,6 @@
 package com.practice.service.impl;
 
+import com.practice.dto.AddStudentRequestDto;
 import com.practice.dto.StudentDto;
 import com.practice.entity.Student;
 import com.practice.repository.StudentRepository;
@@ -28,6 +29,12 @@ public class StudentServiceImpl implements StudentService {
         return studentDtoList;
     }
 
+    @Override
+    public StudentDto createNewStudent(AddStudentRequestDto addStudentRequestDto) {
+        Student newStudent = modelMapper.map(addStudentRequestDto, Student.class);
+        Student student = studentRepository.save(newStudent);
+        return modelMapper.map(student, StudentDto.class);
+    }
 
     @Override
     public StudentDto getStudentById(Long id) {
