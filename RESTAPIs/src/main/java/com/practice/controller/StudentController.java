@@ -12,16 +12,17 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/students")
 public class StudentController {
 
     private final StudentService studentService;
 
-    @GetMapping("/student")
+    @GetMapping
     public ResponseEntity<List<StudentDto>> getAllStudents() {
         return ResponseEntity.ok(studentService.getAllStudents());
     }
 
-    @GetMapping("/student/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<StudentDto> getStudentById(@PathVariable Long id) {
         return ResponseEntity.ok(studentService.getStudentById(id));
     }
