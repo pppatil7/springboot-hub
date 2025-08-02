@@ -49,4 +49,12 @@ public class StudentServiceImpl implements StudentService {
         }
         studentRepository.deleteById(id);
     }
+
+    @Override
+    public StudentDto updateStudent(Long id, AddStudentRequestDto addStudentRequestDto) {
+        Student student = studentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Student Not Found with id: " + id));
+        modelMapper.map(addStudentRequestDto, student);
+        student = studentRepository.save(student);
+        return modelMapper.map(student, StudentDto.class);
+    }
 }
