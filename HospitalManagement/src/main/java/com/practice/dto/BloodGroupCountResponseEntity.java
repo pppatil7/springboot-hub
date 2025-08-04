@@ -1,6 +1,6 @@
 package com.practice.dto;
 
-import com.practice.type.BloodGroupType;
+import com.practice.entity.type.BloodGroupType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.practice.type;
+package com.practice.entity.type;
 
 public enum BloodGroupType {
 

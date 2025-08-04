@@ -1,6 +1,6 @@
 package com.practice.entity;
 
-import com.practice.type.BloodGroupType;
+import com.practice.entity.type.BloodGroupType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

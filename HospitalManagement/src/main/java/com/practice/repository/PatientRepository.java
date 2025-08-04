@@ -2,7 +2,7 @@ package com.practice.repository;
 
 import com.practice.dto.BloodGroupCountResponseEntity;
 import com.practice.entity.Patient;
-import com.practice.type.BloodGroupType;
+import com.practice.entity.type.BloodGroupType;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
