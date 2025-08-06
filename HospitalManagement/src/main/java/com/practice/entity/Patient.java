@@ -48,5 +48,4 @@ public class Patient {
     @Enumerated(EnumType.STRING)
     private BloodGroupType bloodGroup;
 
-
 }
