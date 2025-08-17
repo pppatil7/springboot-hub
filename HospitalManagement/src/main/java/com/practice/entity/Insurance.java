@@ -36,4 +36,7 @@ public class Insurance {
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
+    @OneToOne(mappedBy = "insurance") //inverse side
+    private Patient patient;
+
 }
