@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,4 +33,7 @@ public class Doctor {
 
     @ManyToMany(mappedBy = "doctors")
     private Set<Department> departments = new HashSet<>();
+
+    @OneToMany(mappedBy = "doctor")
+    private List<Appointment> appointments = new ArrayList<>();
 }

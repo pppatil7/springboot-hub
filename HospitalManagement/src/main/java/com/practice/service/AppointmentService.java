@@ -34,7 +34,17 @@ public class AppointmentService {
         patient.getAppointments().add(appointment); //to maintain consistency
 
         return appointmentRepository.save(appointment);
+    }
 
+
+    @Transactional
+    public Appointment reAssignAppointmentToAnotherDoctor(Long appointmentId, Long doctorId) {
+        Appointment appointment = appointmentRepository.findById(appointmentId).orElseThrow();
+        Doctor doctor = doctorRepository.findById(doctorId).orElseThrow();
+
+        appointment.setDoctor(doctor);  //this will automatically call update, because it is dirty now
+        doctor.getAppointments().add(appointment); //just for bidirectional consistency
+        return appointment;
     }
 
 
