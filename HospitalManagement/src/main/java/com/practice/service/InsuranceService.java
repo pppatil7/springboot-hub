@@ -26,7 +26,15 @@ public class InsuranceService {
         patient.setInsurance(insurance);
         insurance.setPatient(patient); //bidirectional consistency maintainance
         return patient;
+    }
 
+    @Transactional
+    public Patient dissociateInsuranceFromPatient(Long patientId) {
+        Patient patient = patientRepository.findById(patientId).
+                orElseThrow(() -> new EntityNotFoundException("Patient Not found with id: " + patientId));
+
+        patient.setInsurance(null);
+        return patient;
     }
 
 
