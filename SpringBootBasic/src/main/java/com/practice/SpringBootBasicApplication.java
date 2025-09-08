@@ -8,11 +8,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringBootBasicApplication implements CommandLineRunner {
 
-    @Autowired
-    Mango mango1;
+//    @Autowired
+//    Mango mango1;
+//
+//    @Autowired
+//    Mango mango2;
 
     @Autowired
-    Mango mango2;
+    DBService dbService;
 
 
     public static void main(String[] args) {
@@ -21,9 +24,13 @@ public class SpringBootBasicApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        mango1.eat();
-        mango2.eat();
-        System.out.println(mango1.hashCode());
-        System.out.println(mango2.hashCode());
+//        mango1.eat();
+//        mango2.eat();
+//        System.out.println(mango1.hashCode());
+//        System.out.println(mango2.hashCode());
+
+        dbService.getDataFromDb();
+
+
     }
 }
