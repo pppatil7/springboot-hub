@@ -9,7 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringBootBasicApplication implements CommandLineRunner {
 
     @Autowired
-    Mango mango;
+    Mango mango1;
+
+    @Autowired
+    Mango mango2;
+
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootBasicApplication.class, args);
@@ -17,6 +21,9 @@ public class SpringBootBasicApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        mango.eat();
+        mango1.eat();
+        mango2.eat();
+        System.out.println(mango1.hashCode());
+        System.out.println(mango2.hashCode());
     }
 }
