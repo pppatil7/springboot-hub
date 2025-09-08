@@ -2,7 +2,7 @@ package com.practice;
 
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class Mango {
 
     public void eat() {
