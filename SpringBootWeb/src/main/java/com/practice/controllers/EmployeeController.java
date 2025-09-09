@@ -1,43 +1,34 @@
 package com.practice.controllers;
 
 import com.practice.dto.EmployeeDTO;
-import com.practice.entities.Employee;
-import com.practice.repositories.EmployeeRepository;
+import com.practice.services.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/employees")
 public class EmployeeController {
 
-    private final EmployeeRepository employeeRepository;
+    private final EmployeeService employeeService;
 
-    public EmployeeController(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
-    //    @GetMapping(path = "/hello")
-//    public String sayHelloToEmp() {
-//        return "hello";
-//    }
-
-
     @GetMapping("/{id}")
-    public Employee getEmployeeId(@PathVariable Long id) {
-        return employeeRepository.findById(id).orElse(null);
+    public EmployeeDTO getEmployeeId(@PathVariable Long id) {
+        return employeeService.getEmployeeById(id);
     }
 
     @GetMapping
-    public List<Employee> getAllEmployees(@RequestParam(required = false) String sortBy) {
-        return employeeRepository.findAll();
+    public List<EmployeeDTO> getAllEmployees(@RequestParam(required = false) String sortBy) {
+        return employeeService.getAllEmployees();
     }
 
     @PostMapping
-    public Employee createNewEmployee(@RequestBody Employee inputEmployee) {
-        return employeeRepository.save(inputEmployee);
+    public EmployeeDTO createNewEmployee(@RequestBody EmployeeDTO inputEmployee) {
+        return employeeService.createNewEmployee(inputEmployee);
     }
 
     @PutMapping
