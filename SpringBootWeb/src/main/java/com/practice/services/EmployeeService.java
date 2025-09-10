@@ -6,6 +6,7 @@ import com.practice.repositories.EmployeeRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,4 +41,24 @@ public class EmployeeService {
         Employee savedEmployee = employeeRepository.save(employee);
         return modelMapper.map(savedEmployee, EmployeeDTO.class);
     }
+
+    public EmployeeDTO updateEmployeeById(Long id, EmployeeDTO employeeDTO) {
+        Employee employee = modelMapper.map(employeeDTO, Employee.class);
+        employee.setId(id);
+        Employee savedEmployee = employeeRepository.save(employee);
+        return modelMapper.map(savedEmployee, EmployeeDTO.class);
+    }
+
+    public boolean isExistsById(Long id) {
+        return employeeRepository.existsById(id);
+    }
+
+    public boolean deleteEmployeeById(Long id) {
+        boolean exists = isExistsById(id);
+        if (!exists) return false;
+        employeeRepository.deleteById(id);
+        return true;
+    }
+
+
 }

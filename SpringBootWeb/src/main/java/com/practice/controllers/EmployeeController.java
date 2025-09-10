@@ -31,9 +31,14 @@ public class EmployeeController {
         return employeeService.createNewEmployee(inputEmployee);
     }
 
-    @PutMapping
-    public String updateEmployeeById() {
-        return "PUT Request";
+    @PutMapping("/{id}")
+    public EmployeeDTO updateEmployeeById(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
+        return employeeService.updateEmployeeById(id, employeeDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean deleteEmployeeById(@PathVariable Long id) {
+        return employeeService.deleteEmployeeById(id);
     }
 
 
