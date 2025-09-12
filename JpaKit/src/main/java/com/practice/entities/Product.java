@@ -23,6 +23,7 @@ import java.time.LocalDateTime;
         }
 )
 @Entity
+@Builder
 public class Product {
 
     @Id
