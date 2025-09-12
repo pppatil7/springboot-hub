@@ -1,6 +1,7 @@
 package com.practice.repositories;
 
 import com.practice.entities.Product;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -17,4 +18,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findAllByOrderByPrice();
 
     List<Product> findBy(Sort sort);
+
+    List<Product> findByTitleContainingIgnoreCase(String title, Pageable pageable);
 }
