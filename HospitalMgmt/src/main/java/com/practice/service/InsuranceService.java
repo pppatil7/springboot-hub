@@ -19,12 +19,13 @@ public class InsuranceService {
 
 
     @Transactional
-    public void assignInsuranceToPatient(Insurance insurance, Long patientId) {
+    public Insurance assignInsuranceToPatient(Insurance insurance, Long patientId) {
         Patient patient = patientRepository.findById(patientId).orElseThrow();
 
         patient.setInsurance(insurance);
 
         insurance.setPatient(patient); //optional
+        return insurance;
     }
 
 }
