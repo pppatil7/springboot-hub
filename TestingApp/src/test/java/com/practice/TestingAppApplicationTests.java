@@ -7,15 +7,16 @@ import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 
 @Slf4j
 class TestingAppApplicationTests {
 
-    @BeforeAll
-    static void setUpOnce() {
-        log.info("setup once");
-    }
+//    @BeforeAll
+//    static void setUpOnce() {
+//        log.info("setup once");
+//    }
 
     @BeforeEach
     void setUp() {
@@ -27,10 +28,10 @@ class TestingAppApplicationTests {
         log.info("Tearing down the method");
     }
 
-    @AfterAll
-    static void tearDownOnce() {
-        log.info("Tearing down all");
-    }
+//    @AfterAll
+//    static void tearDownOnce() {
+//        log.info("Tearing down all");
+//    }
 
     @Test
     void testNumberOne() {
@@ -52,8 +53,28 @@ class TestingAppApplicationTests {
 
     }
 
+    @Test
+    void testDivideTwoNumbersWhen_DenominatorIsZero_ThenArithmeticException() {
+        int a = 5;
+        int b = 0;
+
+        assertThatThrownBy(() -> divideTwoNumbers(a, b))
+                .isInstanceOf(ArithmeticException.class)
+                .hasMessage("Tried to divide by Zero");
+
+    }
+
     private int addTwoNumbers(int a, int b) {
         return a + b;
+    }
+
+    double divideTwoNumbers(int a, int b) {
+        try {
+            return a / b;
+        } catch (ArithmeticException e) {
+            log.error("Arithmetic exception occured: " + e.getLocalizedMessage());
+            throw new ArithmeticException("Tried to divide by Zero");
+        }
     }
 
 
