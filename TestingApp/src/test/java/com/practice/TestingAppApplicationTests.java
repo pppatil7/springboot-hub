@@ -35,7 +35,17 @@ class TestingAppApplicationTests {
 
     @Test
     void testNumberTwo() {
-        log.info("test two");
+        int a = 12;
+        int b = 45;
+
+        int result = addTwoNumbers(a, b);
+
+        Assertions.assertEquals(57, result);
+
+    }
+
+    private int addTwoNumbers(int a, int b) {
+        return a + b;
     }
 
 
