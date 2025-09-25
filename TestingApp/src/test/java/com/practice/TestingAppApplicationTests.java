@@ -1,8 +1,12 @@
 package com.practice;
 
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
+import org.assertj.core.data.Offset;
 import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
 @Slf4j
@@ -30,7 +34,7 @@ class TestingAppApplicationTests {
 
     @Test
     void testNumberOne() {
-        log.info("test one");
+        assertThat("Mango").startsWith("Man").endsWith("go").hasSize(5);
     }
 
     @Test
@@ -40,7 +44,11 @@ class TestingAppApplicationTests {
 
         int result = addTwoNumbers(a, b);
 
-        Assertions.assertEquals(57, result);
+//        Assertions.assertEquals(57, result);
+
+        assertThat(result).isEqualTo(57)
+                .isCloseTo(58, Offset.offset(1));
+
 
     }
 
