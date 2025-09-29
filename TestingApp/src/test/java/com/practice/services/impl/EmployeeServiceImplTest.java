@@ -6,6 +6,7 @@ import com.practice.repositories.EmployeeRepository;
 import com.practice.services.EmployeeService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
@@ -33,8 +34,6 @@ class EmployeeServiceImplTest {
 
     @Test
     void testGetEmployeeById_WhenEmployeeIdIsPresent_ThenReturnEmployeeDto() {
-
-
         //assign
         Long id = 1L;
         Employee mockEmployee = Employee.builder()
@@ -51,9 +50,7 @@ class EmployeeServiceImplTest {
         //assert
         assertThat(employeeDTO.getId()).isEqualTo(id);
         assertThat(employeeDTO.getEmail()).isEqualTo(mockEmployee.getEmail());
-        verify(employeeRepository,times(1)).findById(id);
-
-
+        verify(employeeRepository, times(1)).findById(id);
     }
 
 
