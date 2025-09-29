@@ -15,7 +15,7 @@ import org.modelmapper.ModelMapper;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class EmployeeServiceImplTest {
@@ -51,6 +51,7 @@ class EmployeeServiceImplTest {
         //assert
         assertThat(employeeDTO.getId()).isEqualTo(id);
         assertThat(employeeDTO.getEmail()).isEqualTo(mockEmployee.getEmail());
+        verify(employeeRepository,times(1)).findById(id);
 
 
     }
